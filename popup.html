@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    width: 220px;
+    padding: 14px;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 13px;
+    color: #e0e0e0;
+    background: #1a1a2e;
+    margin: 0;
+  }
+  h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .speed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .speed-btn {
+    background: #2a2a4a;
+    color: #ccc;
+    border: 1px solid #3a3a5a;
+    padding: 8px 0;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .speed-btn:hover {
+    background: #3a3a5a;
+    color: #fff;
+  }
+  .speed-btn.active {
+    background: #4a6cf7;
+    color: #fff;
+    border-color: #4a6cf7;
+    font-weight: 700;
+  }
+  .custom-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .custom-row label {
+    font-size: 12px;
+    color: #888;
+    white-space: nowrap;
+  }
+  .custom-input {
+    width: 60px;
+    padding: 6px 8px;
+    background: #2a2a4a;
+    color: #fff;
+    border: 1px solid #3a3a5a;
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+  }
+  .custom-input:focus {
+    outline: none;
+    border-color: #4a6cf7;
+  }
+  .custom-btn {
+    background: #4a6cf7;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .custom-btn:hover {
+    background: #5b7df8;
+  }
+  .status {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <h3>Vimeo Gyorsito</h3>
+  <div class="speed-grid" id="presets"></div>
+  <div class="custom-row">
+    <label>Egyedi:</label>
+    <input type="number" class="custom-input" id="customSpeed" min="0.5" max="4" step="0.25" placeholder="1.5">
+    <button class="custom-btn" id="applyCustom">OK</button>
+  </div>
+  <div class="status" id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
