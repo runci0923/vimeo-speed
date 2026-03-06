@@ -1,0 +1,26 @@
+Vimeo Gyorsito - Automatic Vimeo Video Speed Control
+
+Tired of manually changing the playback speed for every single Vimeo video? Vimeo Gyorsito automatically sets your preferred playback speed on all Vimeo videos — both on vimeo.com and embedded players on any website.
+
+FEATURES:
+• Set a default playback speed that applies to every Vimeo video automatically
+• Preset speed buttons (1x, 1.25x, 1.5x, 1.75x, 2x) — one click to switch
+• Custom speed input for any value between 0.5x and 4x
+• Speed overlay appears on the video when you hover — change speed without leaving the player
+• Brief speed indicator flashes when a video starts playing
+• Works on vimeo.com AND embedded Vimeo players on any website
+• Speed persists across browser sessions — set it once, forget it
+• Badge on the extension icon shows your current speed at a glance
+• Compatible with Vimeo's native speed menu — use either one
+
+PERFECT FOR:
+• Online course students watching 1000+ tutorial videos
+• Anyone who prefers faster (or slower) video playback
+• Teams using Vimeo for training or onboarding content
+
+PRIVACY:
+This extension only stores your speed preference locally using Chrome's built-in storage. No data is collected, no analytics, no tracking. The extension only runs on Vimeo pages.
+
+PERMISSIONS EXPLAINED:
+• Storage: To remember your preferred speed across sessions
+• Content scripts on vimeo.com: To control video playback speed
