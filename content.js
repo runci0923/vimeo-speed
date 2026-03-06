@@ -9,14 +9,39 @@
   let desiredSpeed = DEFAULT_SPEED;
   const processedVideos = new WeakSet();
 
-  // Load saved speed from storage
+  function startObserving() {
+    document.querySelectorAll('video').forEach(initSpeedControl);
+
+    var observer = new MutationObserver(function (mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        var addedNodes = mutations[i].addedNodes;
+        for (var j = 0; j < addedNodes.length; j++) {
+          var node = addedNodes[j];
+          if (node.nodeType !== Node.ELEMENT_NODE) continue;
+
+          if (node.nodeName === 'VIDEO') {
+            initSpeedControl(node);
+          } else if (node.querySelectorAll) {
+            var videos = node.querySelectorAll('video');
+            for (var k = 0; k < videos.length; k++) {
+              initSpeedControl(videos[k]);
+            }
+          }
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  // Load saved speed from storage, THEN start observing videos
   if (typeof chrome !== 'undefined' && chrome.storage) {
     chrome.storage.sync.get({ defaultSpeed: DEFAULT_SPEED }, function (data) {
       desiredSpeed = data.defaultSpeed;
-      document.querySelectorAll('video').forEach(function (v) {
-        v.playbackRate = desiredSpeed;
-      });
-      updateAllOverlays();
+      startObserving();
     });
 
     chrome.storage.onChanged.addListener(function (changes) {
@@ -28,6 +53,8 @@
         updateAllOverlays();
       }
     });
+  } else {
+    startObserving();
   }
 
   function updateAllOverlays() {
@@ -309,29 +336,4 @@
     setTimeout(function () { createOverlay(video); }, 500);
   }
 
-  document.querySelectorAll('video').forEach(initSpeedControl);
-
-  var observer = new MutationObserver(function (mutations) {
-    for (var i = 0; i < mutations.length; i++) {
-      var addedNodes = mutations[i].addedNodes;
-      for (var j = 0; j < addedNodes.length; j++) {
-        var node = addedNodes[j];
-        if (node.nodeType !== Node.ELEMENT_NODE) continue;
-
-        if (node.nodeName === 'VIDEO') {
-          initSpeedControl(node);
-        } else if (node.querySelectorAll) {
-          var videos = node.querySelectorAll('video');
-          for (var k = 0; k < videos.length; k++) {
-            initSpeedControl(videos[k]);
-          }
-        }
-      }
-    }
-  });
-
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true
-  });
 })();
