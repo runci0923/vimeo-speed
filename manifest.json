@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Vimeo Instant Speed",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Automatically speed up Vimeo videos",
   "permissions": ["storage"],
   "action": {
